@@ -41,17 +41,13 @@ for row in c.execute('SELECT sfld FROM notes WHERE id IN (SELECT nid FROM cards 
         except ValueError:
             pass
 
-if len(sys.argv) > 1:
-    min_len = sys.argv[1]
-else:
-    min_len = 0
-
 kanji_required = False
 kanji_only = False
 kana_only = False
+min_len = 0
 add_allowed = 0
-if len(sys.argv) > 2:
-    for i in range(2, len(sys.argv)):
+if len(sys.argv) > 1:
+    for i in range(1, len(sys.argv)):
         if 'kr' in sys.argv[i]:
             kanji_required = True
         if 'ko' in sys.argv[i]:
@@ -60,6 +56,8 @@ if len(sys.argv) > 2:
             kana_only = True
         if sys.argv[i][0] == 'a':
             add_allowed = int(sys.argv[i][1:])
+        if sys.argv[i][0] == 'm':
+            min_len = int(sys.argv[i][1:])
 
 f = open('word_list')
 of = open('output', 'w')
