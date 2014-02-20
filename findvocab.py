@@ -49,13 +49,17 @@ else:
 kanji_required = False
 kanji_only = False
 kana_only = False
+add_allowed = 0
 if len(sys.argv) > 2:
-    if sys.argv[2] == 'kr':
-        kanji_required = True
-    if sys.argv[2] == 'ko':
-        kanji_only = True
-    if sys.argv[2] == 'nk':
-        kana_only = True
+    for i in range(2, len(sys.argv)):
+        if 'kr' in sys.argv[i]:
+            kanji_required = True
+        if 'ko' in sys.argv[i]:
+            kanji_only = True
+        if 'nk' in sys.argv[i]:
+            kana_only = True
+        if sys.argv[i][0] == 'a':
+            add_allowed = int(sys.argv[i][1:])
 
 f = open('word_list')
 of = open('output', 'w')
@@ -67,13 +71,16 @@ for line in f:
         continue
     writable = True
     has_kanji = False
+    additional = 0
     for char in w:
         has_other = False
         if unicodedata.name(char).find('CJK UNIFIED IDEOGRAPH') >= 0:
             has_kanji = True
             if not char in kanji:
-                writable = False
-                break
+                additional+=1
+                if additional>add_allowed:
+                    writable = False
+                    break
         else:
             has_other = True
             break
