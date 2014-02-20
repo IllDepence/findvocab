@@ -1,0 +1,28 @@
+USAGE:
+
+- copy Anki's collection.anki2 file into findvocab folder
+- run python findvocab.py [<min>] [kr|ko|nk]
+
+    - <min>: minimum length of words, defaults to 0
+    - kr: kanji required, words w/o kanji are omitted
+    - ko: kanji only, words w/ kana are omitted
+    - nk: no kanji, words w/ kanji are omitted
+
+    examples:
+        python findvocab.py
+        python findvocab.py 3
+        python findvocab.py 2 kr
+
+- a dialog will appear, choose your kanji deck
+- view output file
+
+
+FUNCTION:
+
+the script will determine words that you're already able to read/write but don't appear in your anki deck
+
+
+WORD LISTS:
+
+(1) word_list based on http://pomax.nihongoresources.com/index.php?entry=1222520260
+(2) word_list_small from http://www.offbeatband.com/2010/12/the-most-commonly-used-japanese-words-by-frequency/ which is based on (1)
