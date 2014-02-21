@@ -6,9 +6,10 @@ USAGE:
     - m<n>: set minimum length for words to <n>, defaults to 0
     - a<n>: allow words to include <n> unknown kanji, defaults to 0
     - w<k>: with additional kanji <k>
-    - kr: kanji required, words w/o kanji are omitted
-    - ko: kanji only, words w/ kana are omitted
-    - nk: no kanji, words w/ kanji are omitted
+    - r<k>: require words to include kanji <k>
+    - kr: kanji required, words w/o any kanji are omitted
+    - ko: kanji only, words w/ at least one non kanji character are omitted
+    - nk: no kanji, words w/ at least one kanji are omitted
 
     examples:
         python findvocab.py

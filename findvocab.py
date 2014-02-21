@@ -44,6 +44,8 @@ for row in c.execute('SELECT sfld FROM notes WHERE id IN (SELECT nid FROM cards 
 kanji_required = False
 kanji_only = False
 kana_only = False
+given_required = False
+given = ''
 min_len = 0
 add_allowed = 0
 if len(sys.argv) > 1:
@@ -60,6 +62,9 @@ if len(sys.argv) > 1:
             min_len = int(sys.argv[i][1:])
         if sys.argv[i][0] == 'w':
             kanji += sys.argv[i][1:]
+        if sys.argv[i][0] == 'r':
+            given_required = True
+            given += sys.argv[i][1:]
 
 f = open('word_list')
 of = open('output', 'w')
@@ -71,9 +76,10 @@ for line in f:
         continue
     writable = True
     has_kanji = False
+    has_other = False
+    has_required = False
     additional = 0
     for char in w:
-        has_other = False
         if unicodedata.name(char).find('CJK UNIFIED IDEOGRAPH') >= 0:
             has_kanji = True
             if not char in kanji:
@@ -84,11 +90,15 @@ for line in f:
         else:
             has_other = True
             break
+        if char in given:
+            has_required = True
     if kanji_only and has_other:
         continue
     if kanji_required and not has_kanji:
         continue
     if kana_only and has_kanji:
+        continue
+    if given_required and not has_required:
         continue
     if not writable:
         continue
