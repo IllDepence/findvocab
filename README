@@ -1,7 +1,7 @@
 USAGE:
 
 - copy Anki's collection.anki2 file into findvocab folder
-- run python findvocab.py [m<n>||a<n>|w<k>kr|ko|nk]
+- run python findvocab.py [m<n>|a<n>|w<k>|kr|ko|nk]
 
     - m<n>: set minimum length for words to <n>, defaults to 0
     - a<n>: allow words to include <n> unknown kanji, defaults to 0
