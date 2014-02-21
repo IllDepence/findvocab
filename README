@@ -1,10 +1,11 @@
 USAGE:
 
 - copy Anki's collection.anki2 file into findvocab folder
-- run python findvocab.py [m<n>||a<n>kr|ko|nk]
+- run python findvocab.py [m<n>||a<n>|w<k>kr|ko|nk]
 
     - m<n>: set minimum length for words to <n>, defaults to 0
     - a<n>: allow words to include <n> unknown kanji, defaults to 0
+    - w<k>: with additional kanji <k>
     - kr: kanji required, words w/o kanji are omitted
     - ko: kanji only, words w/ kana are omitted
     - nk: no kanji, words w/ kanji are omitted
@@ -12,7 +13,8 @@ USAGE:
     examples:
         python findvocab.py
         python findvocab.py m3
-        python findvocab.py kr m2
+        python findvocab.py kr a1
+        python findvocab.py w戻係犯 ko m2
 
 - a dialog will appear, choose your kanji deck
 - view output file

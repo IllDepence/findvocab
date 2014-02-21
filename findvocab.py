@@ -58,6 +58,8 @@ if len(sys.argv) > 1:
             add_allowed = int(sys.argv[i][1:])
         if sys.argv[i][0] == 'm':
             min_len = int(sys.argv[i][1:])
+        if sys.argv[i][0] == 'w':
+            kanji += sys.argv[i][1:]
 
 f = open('word_list')
 of = open('output', 'w')
