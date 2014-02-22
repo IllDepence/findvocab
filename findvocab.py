@@ -65,6 +65,7 @@ if len(sys.argv) > 1:
         if sys.argv[i][0] == 'r':
             given_required = True
             given += sys.argv[i][1:]
+            kanji += given
 
 f = open('word_list')
 of = open('output', 'w')
