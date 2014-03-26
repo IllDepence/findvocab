@@ -48,6 +48,7 @@ given_required = False
 given = ''
 min_len = 0
 add_allowed = 0
+word_list = 'word_list'
 if len(sys.argv) > 1:
     for i in range(1, len(sys.argv)):
         if 'kr' in sys.argv[i]:
@@ -66,8 +67,10 @@ if len(sys.argv) > 1:
             given_required = True
             given += sys.argv[i][1:]
             kanji += given
+        if sys.argv[i][0] == 'W':
+            word_list = sys.argv[i][1:]
 
-f = open('word_list')
+f = open(word_list)
 of = open('output', 'w')
 i = -1
 for line in f:
