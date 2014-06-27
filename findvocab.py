@@ -44,6 +44,7 @@ for row in c.execute('SELECT sfld FROM notes WHERE id IN (SELECT nid FROM cards 
 kanji_required = False
 kanji_only = False
 kana_only = False
+additional_required = False
 given_required = False
 given = ''
 min_len = 0
@@ -57,6 +58,8 @@ if len(sys.argv) > 1:
             kanji_only = True
         if 'nk' in sys.argv[i]:
             kana_only = True
+        if 'Ar' in sys.argv[i]:
+            additional_required = True
         if sys.argv[i][0] == 'a':
             add_allowed = int(sys.argv[i][1:])
         if sys.argv[i][0] == 'm':
@@ -104,7 +107,9 @@ for line in f:
         continue
     if given_required and not has_required:
         continue
-    if not writable:
+    if not writable and not additional_required:
+        continue
+    if additional_required and additional < 1:
         continue
 
     in_anki = False

@@ -1,13 +1,14 @@
 USAGE:
 
 - copy Anki's collection.anki2 file into findvocab folder
-- run python findvocab.py [m<n>|a<n>|w<k>|kr|ko|nk]
+- run python findvocab.py [W<f>|m<n>|w<k>|r<k>|a<n>|Ar|kr|ko|nk]
 
     - W<f>: use file <f> as word list, defaults to "word_list"
     - m<n>: set minimum length for words to <n>, defaults to 0
-    - a<n>: allow words to include <n> unknown kanji, defaults to 0
     - w<k>: with additional kanji <k>
     - r<k>: require words to include kanji <k>
+    - a<n>: allow words to include <n> unknown kanji, defaults to 0
+    - Ar: require words to include at least one unknown kanji
     - kr: kanji required, words w/o any kanji are omitted
     - ko: kanji only, words w/ at least one non kanji character are omitted
     - nk: no kanji, words w/ at least one kanji are omitted
