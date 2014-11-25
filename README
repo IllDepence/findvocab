@@ -1,7 +1,7 @@
 USAGE:
 
 - copy Anki's collection.anki2 file into findvocab folder
-- run python findvocab.py [W<f>|m<n>|w<k>|r<k>|a<n>|Ar|kr|ko|nk]
+- run python findvocab.py [W<f>|m<n>|w<k>|r<k>|a<n>|Ar|kr|ko|nk|jo]
 
     - W<f>: use file <f> as word list, defaults to "word_list"
     - m<n>: set minimum length for words to <n>, defaults to 0
@@ -15,10 +15,10 @@ USAGE:
     - jo: jouyou kanji only, words w/ non jouyou kanji are omitted
 
     examples:
-        python findvocab.py
-        python findvocab.py m3
-        python findvocab.py kr a1
-        python findvocab.py w戻係犯 ko m2 Wmy_own_list
+        (1) python3 findvocab.py
+        (-) python3 findvocab.py kr m2
+        (2) python3 findvocab.py Ar a3 m2 jo
+        (-) python3 findvocab.py w戻係犯 ko m2 Wmy_own_list
 
 - a dialog will appear, choose your kanji deck
 - view output file
@@ -26,10 +26,11 @@ USAGE:
 
 FUNCTION:
 
-the script will determine words that you're already able to read/write but don't appear in your anki deck
+(1) the script will determine words that you're already able to read/write but don't appear in your anki deck
+(2) the script will determine words that use between one and three jouyou kanji, have a minimum length of two characters and don't appear in your anki deck
 
 
 WORD LISTS:
 
-(1) word_list based on http://pomax.nihongoresources.com/index.php?entry=1222520260
-(2) word_list_small from http://www.offbeatband.com/2010/12/the-most-commonly-used-japanese-words-by-frequency/ which is based on (1)
+(a) word_list based on http://pomax.nihongoresources.com/index.php?entry=1222520260
+(b) word_list_small from http://www.offbeatband.com/2010/12/the-most-commonly-used-japanese-words-by-frequency/ which is based on (b)
