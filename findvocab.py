@@ -44,6 +44,7 @@ for row in c.execute('SELECT sfld FROM notes WHERE id IN (SELECT nid FROM cards 
 kanji_required = False
 kanji_only = False
 kana_only = False
+jouyou_only = False
 additional_required = False
 given_required = False
 given = ''
@@ -56,6 +57,8 @@ if len(sys.argv) > 1:
             kanji_required = True
         if 'ko' in sys.argv[i]:
             kanji_only = True
+        if 'jo' in sys.argv[i]:
+            jouyou_only = True
         if 'nk' in sys.argv[i]:
             kana_only = True
         if 'Ar' in sys.argv[i]:
@@ -75,6 +78,9 @@ if len(sys.argv) > 1:
 
 f = open(word_list)
 of = open('output', 'w')
+if jouyou_only:
+    with open('jouyou', 'r') as jf:
+        jouyou = jf.read()
 i = -1
 for line in f:
     i+=1
@@ -85,6 +91,7 @@ for line in f:
     has_kanji = False
     has_other = False
     has_required = False
+    has_non_jouyou = False
     additional = 0
     for char in w:
         if unicodedata.name(char).find('CJK UNIFIED IDEOGRAPH') >= 0:
@@ -94,6 +101,8 @@ for line in f:
                 if additional>add_allowed:
                     writable = False
                     break
+            if not char in jouyou:
+                has_non_jouyou = True
         else:
             has_other = True
             break
@@ -110,6 +119,8 @@ for line in f:
     if not writable and not additional_required:
         continue
     if additional_required and additional < 1:
+        continue
+    if jouyou_only and has_non_jouyou:
         continue
 
     in_anki = False

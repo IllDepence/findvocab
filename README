@@ -12,6 +12,7 @@ USAGE:
     - kr: kanji required, words w/o any kanji are omitted
     - ko: kanji only, words w/ at least one non kanji character are omitted
     - nk: no kanji, words w/ at least one kanji are omitted
+    - jo: jouyou kanji only, words w/ non jouyou kanji are omitted
 
     examples:
         python findvocab.py
