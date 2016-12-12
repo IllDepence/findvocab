@@ -78,6 +78,7 @@ if len(sys.argv) > 1:
 
 f = open(word_list)
 of = open('output', 'w')
+jouyou = []
 if jouyou_only:
     with open('jouyou', 'r') as jf:
         jouyou = jf.read()
